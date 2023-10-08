@@ -1,6 +1,37 @@
-import React from "react";
+import { useEffect, useState } from "react";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [listEmail, setListEmail] = useState([]);
+  const [listPassword, setListPassword] = useState([]);
+
+  console.log(email);
+
+  useEffect(() => {
+    JSON.parse(localStorage.getItem("emailKey"));
+    JSON.parse(localStorage.getItem("passwordKey"));
+  }, []);
+
+//   const onSubmit = () => {
+//     const altEmail = [...listEmail];
+//     const altPass = [...listPassword];
+//     setListEmail([...altEmail, email]);
+//     setListPassword([...altPass, password]);
+//     localStorage.setItem('emailKey', JSON.stringify([...altEmail, email]));
+//     localStorage.setItem('passwordKey', JSON.stringify([...altPass, password]));
+//   };
+
+const onSubmit = () => {
+    
+    setListEmail([...listEmail, email]);
+    setListPassword([...listPassword, password]);
+    
+    localStorage.setItem('emailKey', JSON.stringify([listEmail]));
+    localStorage.setItem('passwordKey', JSON.stringify([listPassword]));
+  };
+  
   return (
     <>
       <div
@@ -18,6 +49,7 @@ function Login() {
                 className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="mb-3">
@@ -28,6 +60,7 @@ function Login() {
                 type="password"
                 className="form-control"
                 id="exampleInputPassword1"
+                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="mb-3">
@@ -46,7 +79,11 @@ function Login() {
               </label>
             </div>
 
-            <button type="submit" className="btn btn-primary">
+            <button
+              type="submit"
+              className="btn btn-primary"
+              onClick={() => onSubmit()}
+            >
               Submit
             </button>
           </form>

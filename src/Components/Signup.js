@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
+
 function Signup() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+
   return (
     <>
       <div
@@ -20,7 +20,7 @@ function Signup() {
                 className="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
-                onChange={(e) => setEmail(e.target.value)}
+                
               />
               <label htmlFor="exampleInputEmail1" className="form-label">
                 Phone Number
@@ -29,7 +29,7 @@ function Signup() {
                 type="number"
                 className="form-control"
                 id=""
-                onChange={(e) => setEmail(e.target.value)}
+               
               />
             </div>
             <div className="mb-3">
@@ -40,7 +40,7 @@ function Signup() {
                 type="password"
                 className="form-control"
                 id="exampleInputPassword1"
-                onChange={(e) => setPassword(e.target.value)}
+                
               />
             </div>
             <div className="mb-3">
@@ -51,18 +51,10 @@ function Signup() {
                 type="password"
                 className="form-control"
                 id="exampleInputPassword1"
-                onChange={(e) => setPassword(e.target.value)}
               />
             </div>
             <div className="mb-3 form-check">
-              {/* <input
-                type="checkbox"
-                className="form-check-input"
-                id="exampleCheck1"
-              /> */}
-              {/* <label className="form-check-label" htmlFor="exampleCheck1">
-                Remember Password
-              </label> */}
+             
             </div>
             <div className="d-flex flex-column justify-content-evenly">
               <div className="d-flex justify-content-evenly pb-3">
@@ -70,7 +62,7 @@ function Signup() {
                   Submit
                 </button>
                 <button type="submit" className="btn btn-primary">
-                <a className="text-white text-decoration-none" href="">Login With Google</a>
+                <a className="text-white text-decoration-none" href="">Login With Google<i className="bi bi-google text-warning ps-2"></i></a>
                 </button>
               </div>
               <button type="submit" className="btn btn-primary">
