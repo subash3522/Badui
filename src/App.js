@@ -12,10 +12,11 @@ import {
 function App() {
   return (
     <>
-      <Signup />
+      
       
       <Router>
       <Routes>
+        <Route path="/" element = {<Signup/>}/>
         <Route path="/Components/Login" element = {<Login/>}></Route> 
 
         
