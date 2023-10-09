@@ -1,18 +1,36 @@
 import { useEffect, useState } from "react";
+import { json } from "react-router-dom";
 
 function Login() {
+
+  // useEffect(() => {
+  //   JSON.parse(localStorage.getItem("emailKey"));
+  //   JSON.parse(localStorage.getItem("passwordKey"));
+  // }, []);
+
+  useEffect(() => {
+    const savedEmail = JSON.parse(localStorage.getItem("emailKey"));
+    const savedPassword = JSON.parse(localStorage.getItem("passwordKey"));
+    
+    if (savedEmail) {
+      setListEmail(savedEmail);
+    }
+
+    if (savedPassword) {
+      setListPassword(savedPassword);
+    }
+  }, []);
+ 
+ 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [listEmail, setListEmail] = useState([]);
   const [listPassword, setListPassword] = useState([]);
 
-  console.log(email);
 
-  useEffect(() => {
-    JSON.parse(localStorage.getItem("emailKey"));
-    JSON.parse(localStorage.getItem("passwordKey"));
-  }, []);
+
+  
 
 //   const onSubmit = () => {
 //     const altEmail = [...listEmail];
@@ -23,14 +41,36 @@ function Login() {
 //     localStorage.setItem('passwordKey', JSON.stringify([...altPass, password]));
 //   };
 
+
+
+// const onSubmit = (event) => {
+//   event.preventDefault()
+    
+//     setListEmail([...listEmail, email]);
+//     setListPassword([...listPassword, password]);
+    
+//     localStorage.setItem('emailKey', JSON.stringify([listEmail]));
+//     localStorage.setItem('passwordKey', JSON.stringify([listPassword]));
+//     console.log(listEmail);
+//   };
+
 const onSubmit = () => {
+  
     
-    setListEmail([...listEmail, email]);
-    setListPassword([...listPassword, password]);
+    const updatedEmailList = [...listEmail, email];
+    const updatedPasswordList = [...listPassword, password];
+
+    setListEmail(updatedEmailList);
+    setListPassword(updatedPasswordList);
+
+    localStorage.setItem('emailKey', JSON.stringify(updatedEmailList));
+    localStorage.setItem('passwordKey', JSON.stringify(updatedPasswordList));
+
+    console.log(updatedEmailList);
+
     
-    localStorage.setItem('emailKey', JSON.stringify([listEmail]));
-    localStorage.setItem('passwordKey', JSON.stringify([listPassword]));
-  };
+};
+  
   
   return (
     <>
