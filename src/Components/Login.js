@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { json } from "react-router-dom";
 
 function Login() {
-
   // useEffect(() => {
   //   JSON.parse(localStorage.getItem("emailKey"));
   //   JSON.parse(localStorage.getItem("passwordKey"));
@@ -11,7 +10,7 @@ function Login() {
   useEffect(() => {
     const savedEmail = JSON.parse(localStorage.getItem("emailKey"));
     const savedPassword = JSON.parse(localStorage.getItem("passwordKey"));
-    
+
     if (savedEmail) {
       setListEmail(savedEmail);
     }
@@ -20,65 +19,51 @@ function Login() {
       setListPassword(savedPassword);
     }
   }, []);
- 
- 
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const [listEmail, setListEmail] = useState([]);
   const [listPassword, setListPassword] = useState([]);
 
+  //   const onSubmit = () => {
+  //     const altEmail = [...listEmail];
+  //     const altPass = [...listPassword];
+  //     setListEmail([...altEmail, email]);
+  //     setListPassword([...altPass, password]);
+  //     localStorage.setItem('emailKey', JSON.stringify([...altEmail, email]));
+  //     localStorage.setItem('passwordKey', JSON.stringify([...altPass, password]));
+  //   };
 
+  // const onSubmit = (event) => {
+  //   event.preventDefault()
 
+  //     setListEmail([...listEmail, email]);
+  //     setListPassword([...listPassword, password]);
+
+  //     localStorage.setItem('emailKey', JSON.stringify([listEmail]));
+  //     localStorage.setItem('passwordKey', JSON.stringify([listPassword]));
+  //     console.log(listEmail);
+  //   };
+
+  const onSubmit = () => {
   
+    if (!listEmail.includes(email)) {
+      const updatedEmailList = [...listEmail, email];
+      const updatedPasswordList = [...listPassword, password];
 
-//   const onSubmit = () => {
-//     const altEmail = [...listEmail];
-//     const altPass = [...listPassword];
-//     setListEmail([...altEmail, email]);
-//     setListPassword([...altPass, password]);
-//     localStorage.setItem('emailKey', JSON.stringify([...altEmail, email]));
-//     localStorage.setItem('passwordKey', JSON.stringify([...altPass, password]));
-//   };
+      setListEmail(updatedEmailList);
+      setListPassword(updatedPasswordList);
 
+      localStorage.setItem("emailKey", JSON.stringify(updatedEmailList));
+      localStorage.setItem("passwordKey", JSON.stringify(updatedPasswordList));
 
+      console.log(updatedEmailList);
+    } else {
+      alert("already registered");
+    }
+  };
 
-// const onSubmit = (event) => {
-//   event.preventDefault()
-    
-//     setListEmail([...listEmail, email]);
-//     setListPassword([...listPassword, password]);
-    
-//     localStorage.setItem('emailKey', JSON.stringify([listEmail]));
-//     localStorage.setItem('passwordKey', JSON.stringify([listPassword]));
-//     console.log(listEmail);
-//   };
-
-const onSubmit = () => {
-  
-  const searchResults = listEmail.filter(item =>
-    item.toLowerCase().includes(email.toLowerCase())
-  );
-
-  if(searchResults){
-    return alert('User Already Exists!')
-  }
-    
-    const updatedEmailList = [...listEmail, email];
-    const updatedPasswordList = [...listPassword, password];
-
-    setListEmail(updatedEmailList);
-    setListPassword(updatedPasswordList);
-
-    localStorage.setItem('emailKey', JSON.stringify(updatedEmailList));
-    localStorage.setItem('passwordKey', JSON.stringify(updatedPasswordList));
-
-    console.log(updatedEmailList);
-
-    
-};
-  
-  
   return (
     <>
       <div
