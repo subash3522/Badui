@@ -56,6 +56,13 @@ function Login() {
 
 const onSubmit = () => {
   
+  const searchResults = listEmail.filter(item =>
+    item.toLowerCase().includes(email.toLowerCase())
+  );
+
+  if(searchResults){
+    return alert('User Already Exists!')
+  }
     
     const updatedEmailList = [...listEmail, email];
     const updatedPasswordList = [...listPassword, password];
