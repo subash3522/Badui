@@ -1,6 +1,8 @@
 import "./App.css";
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
+import UserForm from "./Components/UserForm";
+import Auth from "./Components/Auth";
 import {
   BrowserRouter as
   Router,
@@ -13,7 +15,7 @@ function App() {
   
   return (
     <>
-      
+   
       
       <Router>
       <Routes>
@@ -23,6 +25,7 @@ function App() {
         
       </Routes>
       </Router>
+      <Auth/>
       
     </>
   );
