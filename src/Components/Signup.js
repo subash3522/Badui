@@ -29,7 +29,7 @@ function Signup() {
   const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("https://apitesting-com.onrender.com/newapi", loginValue)
+      .post("http://localhost:5001/newapi", loginValue)
       .then((res, req) => {
         console.log(res +"dandanan");
       })
